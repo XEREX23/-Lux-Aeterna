@@ -6,6 +6,18 @@
   <title>Feliz Cumpleaños, Mi Amor</title>
 
   <style>
+    :root {
+      --morado-oscuro: #240046;
+      --morado-profundo: #3c096c;
+      --morado: #7b2cbf;
+      --morado-claro: #c77dff;
+      --lila: #e0aaff;
+      --blanco: #ffffff;
+      --texto: #2d103f;
+      --suave: #fbf4ff;
+      --sombra: rgba(36, 0, 70, 0.25);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -18,13 +30,50 @@
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #d8b4fe, #a78bfa, #c084fc);
-      color: #2e1065;
+      background: linear-gradient(-45deg, #10002b, #240046, #5a189a, #7b2cbf, #9d4edd, #c77dff);
+      background-size: 400% 400%;
+      animation: gradientMove 14s ease infinite;
+      color: var(--texto);
       overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: -10%;
+      background:
+        radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.22), transparent 13%),
+        radial-gradient(circle at 80% 20%, rgba(224, 170, 255, 0.28), transparent 16%),
+        radial-gradient(circle at 30% 80%, rgba(199, 125, 255, 0.24), transparent 15%),
+        radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.16), transparent 13%);
+      filter: blur(22px);
+      animation: floatingLights 18s ease-in-out infinite alternate;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: -15%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.16) 1px, transparent 2px);
+      background-size: 85px 85px;
+      animation: starsMove 22s linear infinite;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.7;
     }
 
     body.locked {
       overflow: hidden;
+    }
+
+    section,
+    header,
+    footer {
+      position: relative;
+      z-index: 2;
     }
 
     .password-screen {
@@ -35,44 +84,59 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
-      background: linear-gradient(135deg, #a855f7, #c084fc, #e9d5ff);
+      background:
+        radial-gradient(circle at top, rgba(224, 170, 255, 0.9), transparent 35%),
+        linear-gradient(135deg, #10002b, #3c096c, #7b2cbf);
       z-index: 9999;
     }
 
     .password-card {
-      width: min(420px, 100%);
-      padding: 35px 25px;
-      border-radius: 30px;
-      background: rgba(255, 255, 255, 0.95);
+      width: min(430px, 100%);
+      padding: 38px 28px;
+      border-radius: 32px;
+      background: rgba(255, 255, 255, 0.92);
       text-align: center;
-      box-shadow: 0 20px 60px rgba(88, 28, 135, 0.25);
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(16px);
       animation: fadeUp 0.8s ease;
     }
 
     .password-card h2 {
-      color: #7e22ce;
+      color: var(--morado-profundo);
       margin-bottom: 12px;
       font-size: 2rem;
     }
 
+    .password-card p {
+      margin-bottom: 18px;
+      line-height: 1.5;
+      color: #4a1b69;
+    }
+
     .password-card input {
       width: 100%;
-      padding: 14px 16px;
-      border: 2px solid #c084fc;
-      border-radius: 16px;
+      padding: 15px 16px;
+      border: 2px solid #d8b4fe;
+      border-radius: 18px;
       outline: none;
+      font-size: 1rem;
       text-align: center;
+      color: var(--texto);
       margin-bottom: 18px;
+      background: #fcf8ff;
+      transition: 0.3s ease;
     }
 
     .password-card input:focus {
-      border-color: #7e22ce;
+      border-color: var(--morado);
+      box-shadow: 0 0 0 4px rgba(199, 125, 255, 0.25);
     }
 
     .password-error {
       display: none;
       margin-top: 15px;
-      color: #7e22ce;
+      color: #7b2cbf;
       font-weight: 700;
     }
 
@@ -83,127 +147,799 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: 60px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: rgba(224, 170, 255, 0.22);
+      filter: blur(6px);
+      right: -120px;
+      top: 90px;
+      z-index: -1;
+    }
+
+    .badge {
+      margin-bottom: 22px;
+      padding: 10px 18px;
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+      animation: fadeDown 1s ease;
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      color: #fff;
+      max-width: 950px;
+      font-size: clamp(2.7rem, 8vw, 5.4rem);
+      color: var(--blanco);
+      line-height: 1.05;
+      letter-spacing: -1px;
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      animation: fadeDown 1.2s ease;
     }
 
     .hero h2 {
-      margin-top: 15px;
-      font-size: 2rem;
-      color: #ede9fe;
+      margin-top: 18px;
+      font-size: clamp(1.4rem, 4vw, 2.3rem);
+      color: #f4dcff;
+      font-weight: 500;
+      animation: fadeUp 1.5s ease;
     }
 
     .hero p {
-      margin-top: 25px;
-      max-width: 700px;
+      margin-top: 28px;
+      max-width: 760px;
+      font-size: 1.2rem;
+      line-height: 1.8;
       color: #fff;
+      animation: fadeUp 1.8s ease;
     }
 
     .btn {
       margin-top: 35px;
-      padding: 15px 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 15px 34px;
       border-radius: 999px;
-      background: #fff;
-      color: #7e22ce;
-      font-weight: 700;
-      border: none;
+      background: linear-gradient(135deg, #ffffff, #f1d9ff);
+      color: var(--morado-profundo);
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 15px 35px rgba(36, 0, 70, 0.28);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
       cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 22px 45px rgba(36, 0, 70, 0.35);
+      filter: brightness(1.03);
     }
 
     section {
-      padding: 80px 20px;
+      padding: 85px 20px;
     }
 
     .container {
-      max-width: 1100px;
+      width: min(1120px, 100%);
       margin: auto;
     }
 
     .card {
       background: rgba(255, 255, 255, 0.9);
-      border-radius: 30px;
-      padding: 35px;
-      box-shadow: 0 20px 50px rgba(88, 28, 135, 0.18);
+      border-radius: 34px;
+      padding: 42px;
+      box-shadow: 0 24px 60px rgba(36, 0, 70, 0.2);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.65);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: rgba(199, 125, 255, 0.22);
+      top: -70px;
+      right: -70px;
     }
 
     .title {
       text-align: center;
-      font-size: 2.5rem;
+      font-size: clamp(2rem, 5vw, 3.2rem);
       margin-bottom: 25px;
-      color: #7e22ce;
+      color: var(--morado-profundo);
+      position: relative;
+    }
+
+    .title::after {
+      content: '';
+      display: block;
+      width: 90px;
+      height: 5px;
+      margin: 14px auto 0;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--morado), var(--morado-claro));
+    }
+
+    .message {
+      position: relative;
+      z-index: 1;
+      font-size: 1.15rem;
+      line-height: 1.9;
+      text-align: center;
+      color: #3b1555;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 25px;
+      margin-top: 38px;
     }
 
     .memory {
-      background: #f5f3ff;
-      border-radius: 25px;
-      padding: 25px;
+      background: rgba(255, 255, 255, 0.88);
+      border-radius: 28px;
+      padding: 28px 24px;
       text-align: center;
+      box-shadow: 0 16px 38px rgba(36, 0, 70, 0.18);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
     }
 
-    .reason {
-      background: #f3e8ff;
-      border-left: 6px solid #a855f7;
-      padding: 20px;
-      border-radius: 18px;
+    .memory::after {
+      content: 'Toca para ver más';
+      position: absolute;
+      left: 50%;
+      bottom: 14px;
+      transform: translateX(-50%);
+      font-size: 0.78rem;
+      color: rgba(60, 9, 108, 0.62);
+      opacity: 0;
+      transition: opacity 0.3s ease;
     }
 
-    .photo {
-      height: 280px;
-      border-radius: 25px;
-      background: linear-gradient(135deg, #c084fc, #a855f7);
+    .memory:hover {
+      transform: translateY(-10px) rotate(-1deg);
+      box-shadow: 0 22px 45px rgba(36, 0, 70, 0.25);
+      background: rgba(255, 255, 255, 0.96);
+    }
+
+    .memory:hover::after {
+      opacity: 1;
+    }
+
+    .memory:active {
+      transform: scale(0.98);
+    }
+
+    .memory span {
+      width: 64px;
+      height: 64px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      font-size: 2rem;
+      background: linear-gradient(135deg, #f3d7ff, #ffffff);
+      box-shadow: inset 0 0 20px rgba(123, 44, 191, 0.13);
+    }
+
+    .memory h3 {
+      color: var(--morado-profundo);
+      margin-bottom: 10px;
+      font-size: 1.25rem;
+    }
+
+    .memory p {
+      color: #4b2460;
+      line-height: 1.55;
+    }
+
+    .memory-active {
+      display: none;
+      margin: 32px auto 0;
+      max-width: 780px;
+      padding: 24px;
+      border-radius: 28px;
+      text-align: center;
+      color: #fff;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 18px 42px rgba(36, 0, 70, 0.24);
+      animation: fadeUp 0.55s ease;
+    }
+
+    .memory-active h3 {
+      margin-bottom: 8px;
+      font-size: 1.35rem;
+    }
+
+    .memory-active p {
+      line-height: 1.7;
+      color: #fff;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+      margin-top: 38px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .photo {
+      height: 285px;
+      border-radius: 28px;
+      background:
+        linear-gradient(rgba(36, 0, 70, 0.15), rgba(36, 0, 70, 0.35)),
+        linear-gradient(135deg, #9d4edd, #c77dff, #e0aaff);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      font-weight: 800;
+      padding: 20px;
+      box-shadow: 0 18px 40px rgba(36, 0, 70, 0.25);
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .photo:hover {
+      transform: scale(1.04) rotate(1deg);
+      box-shadow: 0 24px 55px rgba(36, 0, 70, 0.35);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      transition: transform 0.5s ease;
+    }
+
+    .photo:hover img {
+      transform: scale(1.08);
+    }
+
+    .photo p {
+      position: relative;
+      z-index: 2;
+      background: rgba(36, 0, 70, 0.55);
+      padding: 11px 16px;
+      border-radius: 16px;
+      backdrop-filter: blur(8px);
+    }
+
+    .reasons {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
+      margin-top: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .reason {
+      background: linear-gradient(135deg, #ffffff, #f7e8ff);
+      border-left: 6px solid var(--morado);
+      padding: 22px;
+      border-radius: 20px;
+      font-size: 1.05rem;
+      line-height: 1.55;
+      color: #3b1555;
+      box-shadow: 0 12px 30px rgba(36, 0, 70, 0.12);
+      transition: transform 0.3s ease;
+    }
+
+    .reason:hover {
+      transform: translateY(-5px);
+    }
+
+    .random-box {
+      margin-top: 28px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    #randomReason {
+      display: none;
+      margin: 22px auto 0;
+      max-width: 720px;
+      padding: 22px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #fff, #f1d9ff);
+      color: #3c096c;
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.6;
+      box-shadow: 0 16px 38px rgba(36, 0, 70, 0.16);
+      animation: fadeUp 0.5s ease;
+    }
+
+    .surprise-box {
+      text-align: center;
+    }
+
+    #secretMessage {
+      display: none;
+      margin-top: 32px;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #fbf4ff, #efd6ff);
+      font-size: 1.15rem;
+      line-height: 1.85;
+      color: #34104b;
+      box-shadow: inset 0 0 0 1px rgba(123, 44, 191, 0.16);
+      animation: fadeUp 0.8s ease;
+      position: relative;
+      z-index: 1;
     }
 
     .footer {
       text-align: center;
-      padding: 45px;
+      padding: 55px 20px;
       color: #fff;
+      font-size: 1.1rem;
+      text-shadow: 0 5px 20px rgba(0, 0, 0, 0.22);
+    }
+
+    .heart {
+      position: fixed;
+      top: -25px;
+      color: rgba(255, 255, 255, 0.85);
+      animation: fall linear forwards;
+      z-index: 1;
+      pointer-events: none;
+      text-shadow: 0 8px 18px rgba(36, 0, 70, 0.28);
+    }
+
+    .click-sparkle {
+      position: fixed;
+      pointer-events: none;
+      z-index: 999;
+      font-size: 1.2rem;
+      animation: sparklePop 0.8s ease forwards;
     }
 
     .music-control {
       position: fixed;
       right: 20px;
       bottom: 20px;
-      width: 55px;
-      height: 55px;
+      z-index: 10;
+      width: 58px;
+      height: 58px;
       border-radius: 50%;
-      border: none;
-      background: #fff;
-      color: #7e22ce;
+      border: 1px solid rgba(255, 255, 255, 0.55);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--morado-profundo);
+      font-size: 1.35rem;
       cursor: pointer;
+      box-shadow: 0 14px 35px rgba(36, 0, 70, 0.25);
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease;
+    }
+
+    .music-control:hover {
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes floatingLights {
+      0% {
+        transform: translate(0, 0) scale(1);
+      }
+      50% {
+        transform: translate(25px, -18px) scale(1.08);
+      }
+      100% {
+        transform: translate(-18px, 25px) scale(1.03);
+      }
+    }
+
+    @keyframes starsMove {
+      0% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(85px);
+      }
+    }
+
+    @keyframes sparklePop {
+      0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(-50%, -85px) scale(1.35) rotate(35deg);
+      }
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 700px) {
+      section {
+        padding: 65px 16px;
+      }
+
+      .card {
+        padding: 30px 20px;
+        border-radius: 28px;
+      }
+
+      .hero p,
+      .message {
+        font-size: 1rem;
+      }
+
+      .music-control {
+        right: 16px;
+        bottom: 16px;
+      }
     }
   </style>
 </head>
 
-<body>
+<body class="locked">
+  <div class="password-screen" id="passwordScreen">
+    <div class="password-card">
+      <h2>💜 Bienvenida, Liz 💜</h2>
+      <p>Ingresa la contraseña para abrir tu sorpresa especial.</p>
+      <input type="password" id="passwordInput" placeholder="Escribe la contraseña" />
+      <button class="btn" onclick="checkPassword()">Entrar ✨</button>
+      <p id="passwordError" class="password-error">Contraseña incorrecta, intenta otra vez.</p>
+    </div>
+  </div>
+
+  <!-- Cambia el archivo de música por una canción tuya. Si no quieres música, puedes borrar esta línea. -->
+  <audio id="music" loop>
+    <source src="musica.mp3" type="audio/mpeg" />
+  </audio>
+
+  <button class="music-control" id="musicButton" onclick="toggleMusic()" title="Reproducir música">🎵</button>
+
   <header class="hero">
-    <h1>Feliz Cumpleaños 💜</h1>
+    <div class="badge">Una página hecha con amor ✨</div>
+    <h1>Feliz Cumpleaños, Mi Amor 💜</h1>
     <h2>Para: Liz</h2>
-    <p>Esta página es un detalle hecho con mucho amor.</p>
+    <p>
+      Hoy es un día muy especial porque nació la persona que hace mis días más bonitos.
+      Esta pequeña página es un detalle hecho con mucho cariño para recordarte lo importante
+      que eres para mí.
+    </p>
+    <a href="#carta" class="btn">Abrir mi regalo 💌</a>
   </header>
 
-  <section>
+  <section id="carta">
     <div class="container">
       <div class="card">
-        <h2 class="title">Mi carta</h2>
-        <p>
-          Amor, gracias por estar en mi vida. Eres una persona increíble y
-          espero que este día sea tan especial como tú 💜
+        <h2 class="title">Mi carta para ti</h2>
+        <p class="message">
+          Amor, hoy quiero decirte gracias por existir, por tu forma de ser, por tu sonrisa,
+          por tus ocurrencias y por cada momento que compartes conmigo. Eres una persona
+          increíble, y me siento muy afortunado de tenerte en mi vida. Espero que este nuevo
+          año te traiga muchos sueños cumplidos, momentos felices y todo el amor que mereces.
+          Te amo mucho y deseo que este cumpleaños sea tan bonito como tú. 💜
         </p>
       </div>
     </div>
   </section>
 
+  <section>
+    <div class="container">
+      <h2 class="title">Nuestros momentos</h2>
+      <div class="timeline">
+        <div class="memory" onclick="openMemory('Cuando te conocí', 'Desde ese momento mi vida tuvo una razón más para sonreír. Fue el inicio de algo que quiero seguir cuidando siempre. 💜')">
+          <span>🌟</span>
+          <h3>Cuando te conocí</h3>
+          <p>Desde ese momento algo cambió para bien en mi vida.</p>
+        </div>
+
+        <div class="memory" onclick="openMemory('Nuestras risas', 'Amo esos momentos en los que nos reímos sin razón, porque contigo hasta lo más simple se vuelve especial. 😂')">
+          <span>😂</span>
+          <h3>Nuestras risas</h3>
+          <p>Contigo hasta los días simples se vuelven especiales.</p>
+        </div>
+
+        <div class="memory" onclick="openMemory('Tu forma de ser', 'Me encanta tu corazón, tu ternura y esa manera tan tuya de hacer que todo se sienta más bonito. 🤍')">
+          <span>🤍</span>
+          <h3>Tu forma de ser</h3>
+          <p>Me encanta tu corazón, tu ternura y todo lo que eres.</p>
+        </div>
+
+        <div class="memory" onclick="openMemory('Tu día especial', 'Hoy quiero que te sientas amada, consentida y feliz, porque mereces un cumpleaños tan hermoso como tú. 🎂')">
+          <span>🎂</span>
+          <h3>Tu día especial</h3>
+          <p>Hoy solo quiero verte feliz y recordarte cuánto te amo.</p>
+        </div>
+
+        <div class="memory" onclick="openMemory('Nuestra primera salida', 'Esa salida se quedó guardada en mi corazón, porque fue uno de esos momentos que no se olvidan. 🌙')">
+          <span>🌙</span>
+          <h3>Nuestra primera salida</h3>
+          <p>Un recuerdo bonito que siempre llevaré en mi corazón.</p>
+        </div>
+
+        <div class="memory" onclick="openMemory('Lo que nos falta vivir', 'Quiero seguir sumando recuerdos contigo: más salidas, más risas, más sueños y muchos momentos que todavía nos esperan. ✨')">
+          <span>✨</span>
+          <h3>Lo que nos falta vivir</h3>
+          <p>Quiero seguir creando momentos, sueños y recuerdos contigo.</p>
+        </div>
+      </div>
+
+      <div class="memory-active" id="memoryActive">
+        <h3 id="memoryTitle">Elige un recuerdo</h3>
+        <p id="memoryText">Toca cualquier cuadro para descubrir un mensaje especial.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="card">
+        <h2 class="title">Galería de recuerdos</h2>
+        <p class="message">
+          Aquí puedes poner fotos de ustedes. Solo cambia los nombres de los archivos por tus imágenes.
+        </p>
+
+        <div class="gallery">
+          <div class="photo">
+            <!-- Ejemplo: coloca una imagen llamada foto1.jpg en la misma carpeta y descomenta la línea de abajo -->
+            <!-- <img src="foto1.jpg" alt="Nuestro recuerdo 1"> -->
+            <p>Foto 1</p>
+          </div>
+
+          <div class="photo">
+            <!-- <img src="foto2.jpg" alt="Nuestro recuerdo 2"> -->
+            <p>Foto 2</p>
+          </div>
+
+          <div class="photo">
+            <!-- <img src="foto3.jpg" alt="Nuestro recuerdo 3"> -->
+            <p>Foto 3</p>
+          </div>
+
+          <div class="photo">
+            <!-- <img src="foto4.jpg" alt="Nuestro recuerdo 4"> -->
+            <p>Foto 4</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="card">
+        <h2 class="title">Cosas que amo de ti</h2>
+        <div class="reasons">
+          <div class="reason">💜 Amo tu sonrisa porque alegra cualquier día.</div>
+          <div class="reason">💜 Amo cómo me haces sentir en paz.</div>
+          <div class="reason">💜 Amo tu manera de escucharme y apoyarme.</div>
+          <div class="reason">💜 Amo cada momento que compartimos juntos.</div>
+          <div class="reason">💜 Amo lo especial que eres, incluso cuando no te das cuenta.</div>
+          <div class="reason">💜 Amo que contigo todo se siente más bonito.</div>
+        </div>
+
+        <div class="random-box">
+          <button class="btn" onclick="showRandomReason()">Dame una razón al azar 💜</button>
+          <div id="randomReason"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="card surprise-box">
+        <h2 class="title">Una sorpresa final</h2>
+        <p class="message">Presiona el botón cuando estés lista.</p>
+        <button class="btn" onclick="showSurprise()">Abrir sorpresa 🎁</button>
+
+        <div id="secretMessage">
+          Mi amor, todavía recuerdo aquella noche en la que te invité a salir y me atreví a besarte.
+          En ese momento sentí una conexión especial contigo, algo que no puedo explicar fácilmente,
+          pero que desde entonces me hizo querer conocerte, cuidarte y amarte cada día más.
+          No quiero que este regalo sea solo para un momento, sino para todo lo que todavía
+          nos falta vivir. Quiero que esta página se vaya llenando con fotos, salidas, risas
+          y recuerdos de los dos. Gracias por ser tú, por estar en mi vida y por hacerla más bonita.
+          Te amo muchísimo, mi princesa hermosa. 💜
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
-    Hecho con amor 💜
+    Hecho con amor para Liz 💜<br />
+    De parte de: Dalton
   </footer>
 
+  <script>
+    // Cambia aquí la contraseña si quieres otra.
+    const PASSWORD = 'Liz2026';
+
+    function checkPassword() {
+      const input = document.getElementById('passwordInput');
+      const error = document.getElementById('passwordError');
+      const screen = document.getElementById('passwordScreen');
+
+      if (input.value === PASSWORD) {
+        screen.style.display = 'none';
+        document.body.classList.remove('locked');
+        launchHearts(20);
+      } else {
+        error.style.display = 'block';
+        input.value = '';
+        input.focus();
+      }
+    }
+
+    document.getElementById('passwordInput').addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        checkPassword();
+      }
+    });
+
+    const music = document.getElementById('music');
+    const musicButton = document.getElementById('musicButton');
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (!isPlaying) {
+        music.play().catch(() => {
+          alert('Para escuchar la música, primero agrega un archivo llamado musica.mp3 en la carpeta del proyecto.');
+        });
+        isPlaying = true;
+        musicButton.innerHTML = '⏸️';
+        musicButton.title = 'Pausar música';
+      } else {
+        music.pause();
+        isPlaying = false;
+        musicButton.innerHTML = '🎵';
+        musicButton.title = 'Reproducir música';
+      }
+    }
+
+    function showSurprise() {
+      const message = document.getElementById('secretMessage');
+      message.style.display = 'block';
+      message.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      launchHearts(35);
+    }
+
+    function openMemory(title, text) {
+      const box = document.getElementById('memoryActive');
+      const memoryTitle = document.getElementById('memoryTitle');
+      const memoryText = document.getElementById('memoryText');
+
+      memoryTitle.textContent = title;
+      memoryText.textContent = text;
+      box.style.display = 'block';
+      box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      launchHearts(10);
+    }
+
+    const reasonsList = [
+      'Amo que contigo puedo ser yo mismo y sentirme en casa. 💜',
+      'Amo tu manera de hacer que un día normal se convierta en algo especial. ✨',
+      'Amo tu mirada, tu ternura y la paz que me transmites. 🤍',
+      'Amo que cada recuerdo contigo se vuelve importante para mí. 🌙',
+      'Amo todo lo bonito que eres, incluso en los detalles más pequeños. 💫'
+    ];
+
+    function showRandomReason() {
+      const randomBox = document.getElementById('randomReason');
+      const randomText = reasonsList[Math.floor(Math.random() * reasonsList.length)];
+      randomBox.textContent = randomText;
+      randomBox.style.display = 'block';
+      launchHearts(18);
+    }
+
+    function createClickSparkle(x, y) {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('click-sparkle');
+      sparkle.innerHTML = Math.random() > 0.5 ? '✨' : '💜';
+      sparkle.style.left = x + 'px';
+      sparkle.style.top = y + 'px';
+      document.body.appendChild(sparkle);
+
+      setTimeout(() => {
+        sparkle.remove();
+      }, 800);
+    }
+
+    document.addEventListener('click', function(event) {
+      createClickSparkle(event.clientX, event.clientY);
+    });
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = ['💜', '✨', '🌙', '🤍'][Math.floor(Math.random() * 4)];
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = Math.random() * 22 + 16 + 'px';
+      heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+    }
+
+    function launchHearts(amount) {
+      for (let i = 0; i < amount; i++) {
+        setTimeout(createHeart, i * 120);
+      }
+    }
+
+    setInterval(createHeart, 1000);
+  </script>
 </body>
 </html>
