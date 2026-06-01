@@ -537,159 +537,17 @@
       text-align: center;
     }
 
-    .surprise-intro {
-      position: relative;
-      z-index: 1;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .surprise-gift {
-      width: 150px;
-      height: 150px;
-      margin: 30px auto 5px;
-      border-radius: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 4.4rem;
-      background: linear-gradient(135deg, #7b2cbf, #c77dff, #ffffff);
-      box-shadow: 0 22px 55px rgba(36, 0, 70, 0.28);
-      cursor: pointer;
-      position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      animation: giftFloat 2.4s ease-in-out infinite;
-    }
-
-    .surprise-gift::before,
-    .surprise-gift::after {
-      content: '';
-      position: absolute;
-      background: rgba(255, 255, 255, 0.65);
-      border-radius: 999px;
-    }
-
-    .surprise-gift::before {
-      width: 28px;
-      height: 100%;
-    }
-
-    .surprise-gift::after {
-      width: 100%;
-      height: 28px;
-    }
-
-    .surprise-gift span {
-      position: relative;
-      z-index: 1;
-      filter: drop-shadow(0 8px 16px rgba(36, 0, 70, 0.25));
-    }
-
-    .surprise-gift:hover {
-      transform: translateY(-8px) scale(1.04) rotate(-2deg);
-      box-shadow: 0 30px 65px rgba(36, 0, 70, 0.36);
-    }
-
-    .surprise-panel {
+    #secretMessage {
       display: none;
-      margin-top: 34px;
-      position: relative;
-      z-index: 1;
-      animation: fadeUp 0.55s ease;
-    }
-
-    .surprise-progress {
-      max-width: 560px;
-      height: 12px;
-      margin: 0 auto 22px;
-      border-radius: 999px;
-      background: rgba(60, 9, 108, 0.12);
-      overflow: hidden;
-    }
-
-    .surprise-progress-bar {
-      width: 0%;
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, #7b2cbf, #c77dff, #f3d7ff);
-      transition: width 0.45s ease;
-    }
-
-    .surprise-message-card {
-      max-width: 790px;
-      margin: 0 auto;
-      padding: 30px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, #ffffff, #f4dcff);
-      color: #34104b;
-      box-shadow: 0 22px 52px rgba(36, 0, 70, 0.18);
-      border: 1px solid rgba(123, 44, 191, 0.14);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .surprise-message-card::before {
-      content: '';
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: rgba(199, 125, 255, 0.2);
-      top: -80px;
-      left: -70px;
-    }
-
-    .surprise-icon {
-      width: 70px;
-      height: 70px;
-      margin: 0 auto 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      font-size: 2rem;
-      background: linear-gradient(135deg, #f3d7ff, #ffffff);
-      box-shadow: inset 0 0 18px rgba(123, 44, 191, 0.12);
-      position: relative;
-      z-index: 1;
-    }
-
-    .surprise-message-card h3 {
-      color: var(--morado-profundo);
-      font-size: 1.65rem;
-      margin-bottom: 12px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .surprise-message-card p {
-      font-size: 1.12rem;
+      margin-top: 32px;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, #fbf4ff, #efd6ff);
+      font-size: 1.15rem;
       line-height: 1.85;
-      position: relative;
-      z-index: 1;
-    }
-
-    .surprise-actions {
-      margin-top: 24px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 12px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .small-btn {
-      margin-top: 0;
-      padding: 12px 22px;
-      font-size: 0.95rem;
-    }
-
-    .surprise-note {
-      margin-top: 16px;
-      color: #5a189a;
-      font-weight: 700;
-      font-size: 0.95rem;
+      color: #34104b;
+      box-shadow: inset 0 0 0 1px rgba(123, 44, 191, 0.16);
+      animation: fadeUp 0.8s ease;
       position: relative;
       z-index: 1;
     }
@@ -794,15 +652,6 @@
       to {
         opacity: 1;
         transform: translateY(0) scale(1);
-      }
-    }
-
-    @keyframes giftFloat {
-      0%, 100% {
-        transform: translateY(0) rotate(0deg);
-      }
-      50% {
-        transform: translateY(-10px) rotate(2deg);
       }
     }
 
@@ -1001,36 +850,17 @@
     <div class="container">
       <div class="card surprise-box">
         <h2 class="title">Una sorpresa final</h2>
+        <p class="message">Presiona el botón cuando estés lista.</p>
+        <button class="btn" onclick="showSurprise()">Abrir sorpresa 🎁</button>
 
-        <div class="surprise-intro">
-          <p class="message">
-            Esta sorpresa se abre poco a poco. Toca el regalo o el botón para descubrir cada parte.
-          </p>
-
-          <div class="surprise-gift" onclick="showSurprise()" title="Abrir sorpresa">
-            <span>🎁</span>
-          </div>
-
-          <button class="btn" id="surpriseButton" onclick="showSurprise()">Abrir primera parte 💜</button>
-        </div>
-
-        <div class="surprise-panel" id="surprisePanel">
-          <div class="surprise-progress">
-            <div class="surprise-progress-bar" id="surpriseProgressBar"></div>
-          </div>
-
-          <div class="surprise-message-card" id="surpriseCard">
-            <div class="surprise-icon" id="surpriseIcon">💜</div>
-            <h3 id="surpriseTitle">Primera sorpresa</h3>
-            <p id="secretMessage">Presiona el botón para descubrir el mensaje.</p>
-
-            <div class="surprise-actions">
-              <button class="btn small-btn" onclick="showSurprise()" id="nextSurpriseButton">Siguiente parte ✨</button>
-              <button class="btn small-btn" onclick="restartSurprise()">Volver a empezar 🌙</button>
-            </div>
-
-            <div class="surprise-note" id="surpriseNote">Parte 1 de 4</div>
-          </div>
+        <div id="secretMessage">
+          Mi amor, todavía recuerdo aquella noche en la que te invité a salir y me atreví a besarte.
+          En ese momento sentí una conexión especial contigo, algo que no puedo explicar fácilmente,
+          pero que desde entonces me hizo querer conocerte, cuidarte y amarte cada día más.
+          No quiero que este regalo sea solo para un momento, sino para todo lo que todavía
+          nos falta vivir. Quiero que esta página se vaya llenando con fotos, salidas, risas
+          y recuerdos de los dos. Gracias por ser tú, por estar en mi vida y por hacerla más bonita.
+          Te amo muchísimo, mi princesa hermosa. 💜
         </div>
       </div>
     </div>
@@ -1087,76 +917,11 @@
       }
     }
 
-    const surpriseMessages = [
-      {
-        icon: '🌙',
-        title: 'Un recuerdo especial',
-        text: 'Mi amor, todavía recuerdo aquella noche en la que te invité a salir y me atreví a besarte. Ese momento se quedó guardado en mí de una forma muy especial.'
-      },
-      {
-        icon: '💜',
-        title: 'Lo que sentí por ti',
-        text: 'En ese momento sentí una conexión contigo, algo que no puedo explicar fácilmente, pero que desde entonces me hizo querer conocerte, cuidarte y amarte cada día más.'
-      },
-      {
-        icon: '✨',
-        title: 'Lo que quiero contigo',
-        text: 'No quiero que este regalo sea solo para un momento, sino para todo lo que todavía nos falta vivir. Quiero que esta página se vaya llenando con fotos, salidas, risas y recuerdos de los dos.'
-      },
-      {
-        icon: '👑',
-        title: 'Mi mensaje final',
-        text: 'Gracias por ser tú, por estar en mi vida y por hacerla más bonita. Te amo muchísimo, mi princesa hermosa. 💜'
-      }
-    ];
-
-    let surpriseIndex = -1;
-
     function showSurprise() {
-      const panel = document.getElementById('surprisePanel');
-      const icon = document.getElementById('surpriseIcon');
-      const title = document.getElementById('surpriseTitle');
       const message = document.getElementById('secretMessage');
-      const progress = document.getElementById('surpriseProgressBar');
-      const note = document.getElementById('surpriseNote');
-      const mainButton = document.getElementById('surpriseButton');
-      const nextButton = document.getElementById('nextSurpriseButton');
-
-      surpriseIndex++;
-
-      if (surpriseIndex >= surpriseMessages.length) {
-        surpriseIndex = 0;
-      }
-
-      const current = surpriseMessages[surpriseIndex];
-      const progressValue = ((surpriseIndex + 1) / surpriseMessages.length) * 100;
-
-      panel.style.display = 'block';
-      icon.textContent = current.icon;
-      title.textContent = current.title;
-      message.textContent = current.text;
-      progress.style.width = progressValue + '%';
-      note.textContent = 'Parte ' + (surpriseIndex + 1) + ' de ' + surpriseMessages.length;
-
-      if (surpriseIndex === surpriseMessages.length - 1) {
-        mainButton.textContent = 'Ver otra vez 💜';
-        nextButton.textContent = 'Repetir sorpresa 🌙';
-        launchHearts(55);
-      } else {
-        mainButton.textContent = 'Abrir siguiente parte ✨';
-        nextButton.textContent = 'Siguiente parte ✨';
-        launchHearts(20);
-      }
-
-      panel.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }
-
-    function restartSurprise() {
-      surpriseIndex = -1;
-      document.getElementById('surprisePanel').style.display = 'none';
-      document.getElementById('surpriseProgressBar').style.width = '0%';
-      document.getElementById('surpriseButton').textContent = 'Abrir primera parte 💜';
-      launchHearts(12);
+      message.style.display = 'block';
+      message.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      launchHearts(35);
     }
 
     function openMoment(title, text) {
