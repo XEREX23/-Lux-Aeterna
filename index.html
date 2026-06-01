@@ -15,11 +15,8 @@
       --sepia-800: #3f2818;
       --sepia-700: #68452c;
       --sepia-600: #8f633f;
-      --sepia-500: #b98a5f;
-      --sepia-300: #dec29a;
       --cream: #fff8ea;
       --wine: #6f2232;
-      --rose: #b76e79;
       --gold: #c79b58;
       --ink: #341f14;
       --muted: #7a5a40;
@@ -210,8 +207,7 @@
       to { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
     }
 
-    .btn,
-    .upload-label {
+    .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -230,15 +226,13 @@
       font-family: "Cormorant Garamond", serif;
     }
 
-    .btn:hover,
-    .upload-label:hover {
+    .btn:hover {
       transform: translateY(-4px) scale(1.02);
       filter: brightness(1.06);
       box-shadow: 0 20px 42px rgba(79, 23, 38, 0.32);
     }
 
-    .btn.secondary,
-    .upload-label {
+    .btn.secondary {
       background: linear-gradient(180deg, var(--sepia-600), var(--sepia-800));
     }
 
@@ -637,20 +631,6 @@
       background: #d8b487;
     }
 
-    .gallery-tools {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin: 24px 0 4px;
-    }
-
-    input[type="file"] {
-      display: none;
-    }
-
     .gallery {
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
       gap: 24px;
@@ -773,71 +753,39 @@
       text-align: center;
     }
 
-    .envelope {
-      width: min(340px, 80vw);
-      height: 205px;
+    .final-ornament {
+      width: min(260px, 70vw);
       margin: 0 auto 26px;
+      padding: 26px 22px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(255, 248, 234, 0.85), transparent 38%),
+        linear-gradient(180deg, rgba(255, 248, 234, 0.88), rgba(226, 198, 155, 0.86));
+      border: 1px solid rgba(104, 69, 44, 0.22);
+      box-shadow: var(--soft-shadow);
       position: relative;
-      perspective: 1000px;
-      filter: drop-shadow(0 18px 30px rgba(43, 26, 16, 0.22));
+      z-index: 1;
     }
 
-    .envelope-body {
-      position: absolute;
-      inset: 35px 0 0;
-      background: linear-gradient(180deg, #f9edcf, #e4c494);
-      border: 1px solid rgba(104, 69, 44, 0.24);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .envelope-body::before,
-    .envelope-body::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      width: 50%;
-      height: 100%;
-      background: rgba(145, 94, 60, 0.12);
-      clip-path: polygon(0 0, 100% 50%, 0 100%);
-    }
-
-    .envelope-body::after {
-      right: 0;
-      transform: scaleX(-1);
-    }
-
-    .envelope-flap {
-      position: absolute;
-      left: 0;
-      right: 0;
-      top: 35px;
-      height: 110px;
-      background: linear-gradient(180deg, #e6c99f, #f9edcf);
-      clip-path: polygon(0 0, 50% 100%, 100% 0);
-      transform-origin: top;
-      transition: transform 0.7s ease;
-      border-radius: 12px 12px 0 0;
-    }
-
-    .envelope.open .envelope-flap {
-      transform: rotateX(180deg);
-    }
-
-    .envelope-seal {
-      position: absolute;
-      left: 50%;
-      top: 112px;
-      transform: translateX(-50%);
-      width: 64px;
-      height: 64px;
+    .final-ornament::before {
+      content: "❤";
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 14px;
+      border-radius: 50%;
       display: grid;
       place-items: center;
-      border-radius: 50%;
       color: #fff1df;
       background: radial-gradient(circle at 35% 30%, #c94f66, #7d1f31 65%, #4b1421);
-      z-index: 3;
-      font-size: 1.45rem;
+      box-shadow: 0 12px 28px rgba(79, 20, 33, 0.25);
+      font-size: 1.8rem;
+    }
+
+    .final-ornament p {
+      font-family: "Special Elite", cursive;
+      color: var(--sepia-700);
+      line-height: 1.45;
+      font-size: 0.98rem;
     }
 
     #secretMessage {
@@ -1037,8 +985,7 @@
         align-items: stretch;
       }
 
-      .btn,
-      .upload-label {
+      .btn {
         width: 100%;
       }
 
@@ -1107,7 +1054,6 @@
         </p>
         <div class="hero-actions">
           <a href="#carta" class="btn">Leer mi carta 💌</a>
-          <a href="#galeria" class="btn secondary">Ver recuerdos 📷</a>
         </div>
       </div>
 
@@ -1189,11 +1135,6 @@
     <div class="container">
       <div class="card reveal">
         <h2 class="title">Galería de recuerdos</h2>
-        <div class="gallery-tools">
-          <label class="upload-label" for="photoUpload">📷 Agregar fotos</label>
-          <input id="photoUpload" type="file" accept="image/*" multiple>
-          <button class="btn secondary" id="clearPhotosButton" type="button">Limpiar fotos subidas</button>
-        </div>
 
         <div class="gallery" id="gallery">
           <div class="photo" style="--tilt:-2deg" data-src="recuerdo1.jpg" data-alt="Nuestro primer recuerdo">
@@ -1266,10 +1207,8 @@
       <div class="card surprise-box reveal">
         <h2 class="title">Una sorpresa final</h2>
 
-        <div class="envelope" id="envelope">
-          <div class="envelope-flap"></div>
-          <div class="envelope-body"></div>
-          <div class="envelope-seal">❤</div>
+        <div class="final-ornament">
+          <p>Una última nota guardada para ti</p>
         </div>
 
         <p class="message">Presiona el botón cuando estés lista para abrir la última carta.</p>
@@ -1298,13 +1237,10 @@
       "use strict";
 
       const PASSWORD = "Liz2026";
-      const PHOTO_STORAGE_KEY = "liz_vintage_photos";
-
       const state = {
         isPlaying: false,
         beatClock: 0
       };
-
       const elements = {};
 
       function getElements() {
@@ -1315,8 +1251,6 @@
         elements.music = document.getElementById("music");
         elements.musicButton = document.getElementById("musicButton");
         elements.musicStatus = document.getElementById("musicStatus");
-        elements.photoUpload = document.getElementById("photoUpload");
-        elements.gallery = document.getElementById("gallery");
         elements.momentModal = document.getElementById("momentModal");
         elements.momentModalTitle = document.getElementById("momentModalTitle");
         elements.momentModalText = document.getElementById("momentModalText");
@@ -1328,9 +1262,7 @@
         elements.randomReasonButton = document.getElementById("randomReasonButton");
         elements.randomReason = document.getElementById("randomReason");
         elements.surpriseButton = document.getElementById("surpriseButton");
-        elements.envelope = document.getElementById("envelope");
         elements.secretMessage = document.getElementById("secretMessage");
-        elements.clearPhotosButton = document.getElementById("clearPhotosButton");
       }
 
       function checkPassword() {
@@ -1370,7 +1302,6 @@
       }
 
       function showSurprise() {
-        elements.envelope.classList.add("open");
         elements.secretMessage.style.display = "block";
         elements.secretMessage.scrollIntoView({ behavior: "smooth", block: "center" });
         launchSymbols(42);
@@ -1415,7 +1346,7 @@
       function showRandomReason() {
         const randomText = reasonsList[Math.floor(Math.random() * reasonsList.length)];
         elements.randomReason.textContent = randomText;
-         elements.randomReason.style.display = "block";
+        elements.randomReason.style.display = "block";
         launchSymbols(18);
       }
 
@@ -1426,10 +1357,7 @@
         sparkle.style.left = x + "px";
         sparkle.style.top = y + "px";
         document.body.appendChild(sparkle);
-
-        setTimeout(() => {
-          sparkle.remove();
-        }, 800);
+        setTimeout(() => sparkle.remove(), 800);
       }
 
       function createSymbol() {
@@ -1440,10 +1368,7 @@
         symbol.style.fontSize = Math.random() * 20 + 16 + "px";
         symbol.style.animationDuration = Math.random() * 3 + 3.6 + "s";
         document.body.appendChild(symbol);
-
-        setTimeout(() => {
-          symbol.remove();
-        }, 7000);
+        setTimeout(() => symbol.remove(), 7000);
       }
 
       function launchSymbols(amount) {
@@ -1452,81 +1377,11 @@
         }
       }
 
-      function addUploadedPhoto(src, caption, savePhoto = true) {
-        const tilt = (Math.random() * 4 - 2).toFixed(2) + "deg";
-
-        const photo = document.createElement("div");
-        photo.className = "photo";
-        photo.style.setProperty("--tilt", tilt);
-        photo.dataset.src = src;
-        photo.dataset.alt = caption;
-        photo.dataset.uploaded = "true";
-
-        photo.innerHTML = `
-          <div class="photo-area">
-            <img src="${src}" alt="${caption}">
-          </div>
-          <p>${caption}</p>
-        `;
-
-        photo.addEventListener("click", () => openImage(src, caption));
-        elements.gallery.prepend(photo);
-
-        if (savePhoto) {
-          saveUploadedPhoto(src, caption);
-        }
-      }
-
-      function saveUploadedPhoto(src, caption) {
-        const saved = JSON.parse(localStorage.getItem(PHOTO_STORAGE_KEY) || "[]");
-        saved.unshift({ src, caption });
-        localStorage.setItem(PHOTO_STORAGE_KEY, JSON.stringify(saved.slice(0, 16)));
-      }
-
-      function loadUploadedPhotos() {
-        const saved = JSON.parse(localStorage.getItem(PHOTO_STORAGE_KEY) || "[]");
-        saved.reverse().forEach(photo => {
-          addUploadedPhoto(photo.src, photo.caption, false);
-        });
-      }
-
-      function clearUploadedPhotos() {
-        localStorage.removeItem(PHOTO_STORAGE_KEY);
-        document.querySelectorAll(".photo[data-uploaded='true']").forEach(photo => photo.remove());
-      }
-
-      function handlePhotoUpload(event) {
-        const files = Array.from(event.target.files || []).filter(file => file.type.startsWith("image/"));
-
-        files.forEach(file => {
-          const reader = new FileReader();
-
-          reader.onload = function (readerEvent) {
-            const src = readerEvent.target.result;
-            const caption = file.name.replace(/\.[^/.]+$/, "");
-            addUploadedPhoto(src, caption);
-          };
-
-          reader.readAsDataURL(file);
-        });
-
-        if (files.length) {
-          launchSymbols(18);
-        }
-
-        event.target.value = "";
-      }
-
       function animateBeat() {
         state.beatClock += 0.055;
-
         const pulseA = (Math.sin(state.beatClock * 3.1) + 1) / 2;
         const pulseB = (Math.sin(state.beatClock * 5.2 + 1.2) + 1) / 2;
-
-        const beat = state.isPlaying
-          ? Math.min(1, Math.pow(pulseA, 6) * 0.88 + pulseB * 0.22)
-          : 0.08;
-
+        const beat = state.isPlaying ? Math.min(1, Math.pow(pulseA, 6) * 0.88 + pulseB * 0.22) : 0.08;
         document.documentElement.style.setProperty("--beat", beat.toFixed(3));
         requestAnimationFrame(animateBeat);
       }
@@ -1534,20 +1389,14 @@
       function revealOnScroll() {
         document.querySelectorAll(".reveal").forEach(item => {
           const top = item.getBoundingClientRect().top;
-
-          if (top < window.innerHeight - 80) {
-            item.classList.add("visible");
-          }
+          if (top < window.innerHeight - 80) item.classList.add("visible");
         });
       }
 
       function bindEvents() {
         elements.passwordButton.addEventListener("click", checkPassword);
-
         elements.passwordInput.addEventListener("keydown", event => {
-          if (event.key === "Enter") {
-            checkPassword();
-          }
+          if (event.key === "Enter") checkPassword();
         });
 
         elements.musicButton.addEventListener("click", toggleMusic);
@@ -1555,31 +1404,21 @@
         elements.closeMomentButton.addEventListener("click", closeMoment);
         elements.closeImageButton.addEventListener("click", closeImage);
         elements.randomReasonButton.addEventListener("click", showRandomReason);
-        elements.photoUpload.addEventListener("change", handlePhotoUpload);
-        elements.clearPhotosButton.addEventListener("click", clearUploadedPhotos);
 
         document.querySelectorAll(".moment-card").forEach(card => {
-          card.addEventListener("click", () => {
-            openMoment(card.dataset.title, card.dataset.text);
-          });
+          card.addEventListener("click", () => openMoment(card.dataset.title, card.dataset.text));
         });
 
         document.querySelectorAll(".photo").forEach(photo => {
-          photo.addEventListener("click", () => {
-            openImage(photo.dataset.src, photo.dataset.alt);
-          });
+          photo.addEventListener("click", () => openImage(photo.dataset.src, photo.dataset.alt));
         });
 
         elements.momentModal.addEventListener("click", event => {
-          if (event.target === elements.momentModal) {
-            closeMoment();
-          }
+          if (event.target === elements.momentModal) closeMoment();
         });
 
         elements.imageModal.addEventListener("click", event => {
-          if (event.target === elements.imageModal) {
-            closeImage();
-          }
+          if (event.target === elements.imageModal) closeImage();
         });
 
         document.addEventListener("click", event => {
@@ -1587,7 +1426,6 @@
         });
 
         window.addEventListener("scroll", revealOnScroll);
-
         window.addEventListener("keydown", event => {
           if (event.key === "Escape") {
             closeMoment();
@@ -1596,7 +1434,7 @@
         });
       }
 
-      function exposeForBackwardCompatibility() {
+      function exposeForCompatibility() {
         window.checkPassword = checkPassword;
         window.toggleMusic = toggleMusic;
         window.showSurprise = showSurprise;
@@ -1605,7 +1443,6 @@
         window.openImage = openImage;
         window.closeImage = closeImage;
         window.showRandomReason = showRandomReason;
-        window.clearUploadedPhotos = clearUploadedPhotos;
       }
 
       function runSmokeTests() {
@@ -1613,18 +1450,19 @@
         console.assert(typeof window.checkPassword === "function", "checkPassword debe existir globalmente");
         console.assert(typeof window.toggleMusic === "function", "toggleMusic debe existir globalmente");
         console.assert(document.getElementById("passwordButton") !== null, "Debe existir el botón de contraseña");
-        console.assert(document.getElementById("musicStatus").textContent === "Pausada", "La música debe iniciar pausada");
+        console.assert(document.querySelector(".hero-actions a").textContent.includes("Leer mi carta"), "Solo debe quedar el botón Leer mi carta");
+        console.assert(document.querySelector("#photoUpload") === null, "No debe existir botón/input para agregar fotos");
+        console.assert(document.querySelector("#clearPhotosButton") === null, "No debe existir botón de limpiar fotos");
         console.assert(document.querySelector(".music-info strong").textContent.trim() === "musica", "El título del reproductor debe decir musica");
         console.assert(document.querySelectorAll(".moment-card").length === 4, "Deben existir 4 tarjetas de momentos");
-        console.assert(document.querySelectorAll(".photo").length >= 4, "Deben existir al menos 4 fotos base");
+        console.assert(document.querySelectorAll(".photo").length === 4, "Deben existir 4 fotos base");
         console.groupEnd();
       }
 
       function init() {
         getElements();
-        exposeForBackwardCompatibility();
+        exposeForCompatibility();
         bindEvents();
-        loadUploadedPhotos();
         revealOnScroll();
         animateBeat();
         setInterval(createSymbol, 1300);
