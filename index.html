@@ -459,6 +459,27 @@
       cursor: pointer;
     }
 
+    .photo::before {
+      content: 'Sube la imagen con este nombre';
+      position: absolute;
+      top: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+      max-width: 85%;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.22);
+      color: #fff;
+      font-size: 0.78rem;
+      backdrop-filter: blur(8px);
+      z-index: 1;
+    }
+
+    .photo.has-image::before {
+      display: none;
+    }
+
     .photo:hover {
       transform: scale(1.04) rotate(1deg);
       box-shadow: 0 24px 55px rgba(36, 0, 70, 0.35);
@@ -484,6 +505,43 @@
       padding: 11px 16px;
       border-radius: 16px;
       backdrop-filter: blur(8px);
+    }
+
+    .photo.has-image p {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+    }
+
+    .image-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(16, 0, 43, 0.75);
+      backdrop-filter: blur(10px);
+      z-index: 9997;
+    }
+
+    .image-modal-content {
+      width: min(900px, 100%);
+      max-height: 88vh;
+      border-radius: 28px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.4);
+      animation: modalPop 0.35s ease;
+      background: #fff;
+    }
+
+    .image-modal-content img {
+      width: 100%;
+      max-height: 88vh;
+      object-fit: contain;
+      display: block;
+      background: #10002b;
     }
 
     .reasons {
@@ -796,34 +854,40 @@
       <div class="card">
         <h2 class="title">Galería de recuerdos</h2>
         <p class="message">
-          Aquí puedes poner fotos de ustedes. Solo cambia los nombres de los archivos por tus imágenes.
+          Sube tus fotos a GitHub con estos nombres exactos: foto1.jpg, foto2.jpg, foto3.jpg y foto4.jpg.
         </p>
 
         <div class="gallery">
-          <div class="photo">
-            <!-- Ejemplo: coloca una imagen llamada foto1.jpg en la misma carpeta y descomenta la línea de abajo -->
-            <!-- <img src="foto1.jpg" alt="Nuestro recuerdo 1"> -->
-            <p>Foto 1</p>
+          <div class="photo" onclick="openImage('foto1.jpg', 'Nuestro recuerdo 1')">
+            <img src="foto1.jpg" alt="Nuestro recuerdo 1" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none'">
+            <p>foto1.jpg</p>
           </div>
 
-          <div class="photo">
-            <!-- <img src="foto2.jpg" alt="Nuestro recuerdo 2"> -->
-            <p>Foto 2</p>
+          <div class="photo" onclick="openImage('foto2.jpg', 'Nuestro recuerdo 2')">
+            <img src="foto2.jpg" alt="Nuestro recuerdo 2" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none'">
+            <p>foto2.jpg</p>
           </div>
 
-          <div class="photo">
-            <!-- <img src="foto3.jpg" alt="Nuestro recuerdo 3"> -->
-            <p>Foto 3</p>
+          <div class="photo" onclick="openImage('foto3.jpg', 'Nuestro recuerdo 3')">
+            <img src="foto3.jpg" alt="Nuestro recuerdo 3" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none'">
+            <p>foto3.jpg</p>
           </div>
 
-          <div class="photo">
-            <!-- <img src="foto4.jpg" alt="Nuestro recuerdo 4"> -->
-            <p>Foto 4</p>
+          <div class="photo" onclick="openImage('foto4.jpg', 'Nuestro recuerdo 4')">
+            <img src="foto4.jpg" alt="Nuestro recuerdo 4" onload="this.parentElement.classList.add('has-image')" onerror="this.style.display='none'">
+            <p>foto4.jpg</p>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <div class="image-modal" id="imageModal">
+    <div class="image-modal-content">
+      <button class="close-modal" onclick="closeImage()">✕</button>
+      <img id="modalImage" src="" alt="Foto ampliada">
+    </div>
+  </div>
 
   <section>
     <div class="container">
@@ -942,6 +1006,29 @@
     document.getElementById('momentModal').addEventListener('click', function(event) {
       if (event.target === this) {
         closeMoment();
+      }
+    });
+
+    function openImage(src, alt) {
+      const modal = document.getElementById('imageModal');
+      const image = document.getElementById('modalImage');
+
+      image.src = src;
+      image.alt = alt;
+      modal.style.display = 'flex';
+    }
+
+    function closeImage() {
+      const modal = document.getElementById('imageModal');
+      const image = document.getElementById('modalImage');
+
+      modal.style.display = 'none';
+      image.src = '';
+    }
+
+    document.getElementById('imageModal').addEventListener('click', function(event) {
+      if (event.target === this) {
+        closeImage();
       }
     });
 
