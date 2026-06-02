@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -309,6 +310,7 @@
       color: var(--muted);
       position: relative;
       z-index: 1;
+      white-space: pre-line;
     }
 
     .hero-actions {
@@ -468,6 +470,7 @@
       columns: 2 320px;
       column-gap: 38px;
       text-align: left;
+      white-space: pre-line;
     }
 
     .letter-text::first-letter {
@@ -767,6 +770,7 @@
       position: relative;
       z-index: 1;
       text-align: center;
+      white-space: pre-line;
     }
 
     .footer {
@@ -986,11 +990,11 @@
   <div class="password-screen" id="passwordScreen">
     <div class="password-card">
       <div class="wax-seal">❤</div>
-      <h2>Una carta para Liz</h2>
-      <p>Ingresa la contraseña para abrir este recuerdo guardado con amor.</p>
-      <input type="password" id="passwordInput" placeholder="Contraseña" autocomplete="off" />
-      <button class="btn" id="passwordButton" type="button">Abrir sobre ✨</button>
-      <p id="passwordError" class="password-error">Contraseña incorrecta, intenta otra vez.</p>
+      <h2>Una carta escrita solo para Liz</h2>
+      <p>Escribe la contraseña para abrir este recuerdo que guardé con todo mi amor.</p>
+      <input type="password" id="passwordInput" placeholder="Escribe la contraseña" autocomplete="off" />
+      <button class="btn" id="passwordButton" type="button">Abrir mi corazón ✨</button>
+      <p id="passwordError" class="password-error">No era esa, mi amor. Intenta una vez más.</p>
     </div>
   </div>
 
@@ -1011,11 +1015,15 @@
     <div class="hero-inner">
       <div class="hero-letter reveal">
         <div class="badge">Para la persona que más quiero 🤎</div>
-        <h1>Feliz Cumpleaños, Mi Amor</h1>
-        <h2>Para: Liz</h2>
+        <h1>Feliz cumpleaños, mi amor</h1>
+        <h2>Para ti, Liz</h2>
         <p>
-          Hoy no quería darte solo un mensaje. Quería regalarte una pequeña cápsula de recuerdos,
-          como esas cartas antiguas que se guardan por años y vuelven a emocionar cada vez que se abren.
+Hoy no quería darte solo un mensaje…
+Quería regalarte algo que puedas sentir.
+
+Quería dejarte una pequeña cápsula de nosotros, de lo que somos, de lo que hemos vivido… como esas cartas que el tiempo no desgasta, sino que hace más valiosas. De esas que se guardan en silencio, pero que al abrirse vuelven a hacer latir el corazón como la primera vez.
+
+Porque lo nuestro no es solo un momento… es un recuerdo que se sigue escribiendo.
         </p>
         <div class="hero-actions">
           <a href="#carta" class="btn">Leer mi carta 💌</a>
@@ -1025,16 +1033,16 @@
       <div class="vintage-frame reveal">
         <div class="portrait-stack">
           <div class="polaroid-small one">
-            <div class="photo-fill">El inicio<br>de todo</div>
-            <div class="polaroid-caption">primer recuerdo</div>
+            <div class="photo-fill">El inicio<br>de nuestra historia</div>
+            <div class="polaroid-caption">donde todo empezó</div>
           </div>
           <div class="polaroid-main">
-            <div class="photo-fill">Liz<br>mi persona favorita</div>
-            <div class="polaroid-caption">feliz cumpleaños</div>
+            <div class="photo-fill">Liz<br>mi lugar bonito</div>
+            <div class="polaroid-caption">feliz cumpleaños, amor</div>
           </div>
           <div class="polaroid-small two">
-            <div class="photo-fill">Risas<br>y momentos</div>
-            <div class="polaroid-caption">nosotros</div>
+            <div class="photo-fill">Risas<br>que guardo</div>
+            <div class="polaroid-caption">nosotros, siempre</div>
           </div>
         </div>
       </div>
@@ -1046,16 +1054,15 @@
       <div class="card reveal">
         <h2 class="title">Mi carta para ti</h2>
         <p class="message letter-text">
-          Amor, hoy quiero agradecerte por ser quien eres, por tu forma tan especial de
-          iluminar mis días, por tu sonrisa y por cada detalle que te hace única. Me siento
-          realmente afortunado de tenerte en mi vida.
+Amor, hoy no solo celebro tu cumpleaños… celebro el privilegio de tenerte en mi vida.
 
-          Hoy simplemente quiero recordarte lo valiosa que eres y lo feliz que me hace tenerte
-          a mi lado. Eres de esas personas que hacen todo más bonito sin darse cuenta. Te amo
-          muchísimo y espero que este cumpleaños sea tan hermoso como tú.
+Gracias por ser quien eres, por esa forma tan tuya de iluminar mis días sin darte cuenta, por tu sonrisa que me calma, por cada detalle que te hace única y que hace que me enamore de ti una y otra vez.
 
-          Quiero seguir compartiendo contigo instantes que se vuelvan inolvidables, creando
-          recuerdos que nos acompañen siempre y que nos hagan felices cada vez que los recordemos.
+A veces pienso en lo afortunado que soy… y no encuentro palabras suficientes para explicarlo. Porque tenerte no es solo suerte, es un regalo que la vida me dio y que valoro todos los días.
+
+Eres de esas personas que transforman lo simple en algo hermoso, que hacen que todo tenga más sentido con solo estar. Y yo… solo quiero seguir siendo parte de tu mundo, seguir caminando contigo, creando recuerdos que algún día miraremos atrás y sonreiremos.
+
+Te amo muchísimo, y deseo que este cumpleaños sea tan increíble como lo eres tú. 💖
         </p>
       </div>
     </div>
@@ -1065,28 +1072,28 @@
     <div class="container">
       <h2 class="title reveal">Nuestros momentos</h2>
       <div class="moments-grid">
-        <div class="moment-card reveal" data-title="🌟 Cuando te conocí" data-text="Desde ese momento mi vida tuvo una razón más para sonreír. Fue el inicio de algo que quiero seguir cuidando siempre. 🤎">
+        <div class="moment-card reveal" data-title="🌟 Cuando todo comenzó" data-text="Hay recuerdos que no necesitan explicación, porque el corazón los reconoce enseguida. Desde que llegaste, algo en mi vida empezó a sentirse más bonito. 🤎">
           <span>🌟</span>
-          <h3>Cuando te conocí</h3>
-          <p>Desde ese momento algo cambió para bien en mi vida.</p>
+          <h3>Cuando todo comenzó</h3>
+          <p>Desde entonces mi vida aprendió a sonreír de otra manera.</p>
         </div>
 
-        <div class="moment-card reveal" data-title="😂 Nuestras risas" data-text="Amo esos momentos en los que nos reímos sin razón, porque contigo hasta lo más simple se vuelve especial.">
+        <div class="moment-card reveal" data-title="😂 Nuestras risas" data-text="Amo cuando nos reímos sin buscar motivos, porque contigo lo sencillo se vuelve recuerdo y cualquier instante se siente como hogar.">
           <span>😂</span>
           <h3>Nuestras risas</h3>
-          <p>Contigo hasta los días simples se vuelven especiales.</p>
+          <p>Contigo hasta el día más simple se vuelve inolvidable.</p>
         </div>
 
-        <div class="moment-card reveal" data-title="🤍 Tu forma de ser" data-text="Me encanta tu corazón, tu ternura y esa manera tan tuya de hacer que todo se sienta más bonito.">
+        <div class="moment-card reveal" data-title="🤍 Tu forma de ser" data-text="Me enamora tu corazón, tu ternura y esa forma tan tuya de convertir cualquier lugar en algo cálido, bonito y especial.">
           <span>🤍</span>
           <h3>Tu forma de ser</h3>
-          <p>Me encanta tu corazón, tu ternura y todo lo que eres.</p>
+          <p>Me encanta lo que eres, incluso en tus detalles más pequeños.</p>
         </div>
 
-        <div class="moment-card reveal" data-title="🎂 Tu día especial" data-text="Hoy quiero que te sientas amada, consentida y feliz, porque mereces un cumpleaños tan hermoso como tú.">
+        <div class="moment-card reveal" data-title="🎂 Tu día especial" data-text="Hoy quiero que te sientas amada, cuidada y feliz, porque mereces un cumpleaños tan dulce, único y hermoso como tú.">
           <span>🎂</span>
           <h3>Tu día especial</h3>
-          <p>Hoy solo quiero verte feliz y recordarte cuánto te amo.</p>
+          <p>Hoy quiero que sientas todo el amor que tengo guardado para ti.</p>
         </div>
       </div>
     </div>
@@ -1155,16 +1162,16 @@
       <div class="card reveal">
         <h2 class="title">Cosas que amo de ti</h2>
         <div class="reasons">
-          <div class="reason reveal">🤎 Amo tu sonrisa porque alegra cualquier día.</div>
-          <div class="reason reveal">🤎 Amo cómo me haces sentir en paz.</div>
-          <div class="reason reveal">🤎 Amo tu manera de escucharme y apoyarme.</div>
-          <div class="reason reveal">🤎 Amo cada momento que compartimos juntos.</div>
-          <div class="reason reveal">🤎 Amo lo especial que eres, incluso cuando no te das cuenta.</div>
-          <div class="reason reveal">🤎 Amo que contigo todo se siente más bonito.</div>
+          <div class="reason reveal">🤎 Amo tu sonrisa, porque tiene la magia de mejorar cualquier día.</div>
+          <div class="reason reveal">🤎 Amo la paz que me das, incluso cuando el mundo parece ir demasiado rápido.</div>
+          <div class="reason reveal">🤎 Amo tu manera de escucharme, cuidarme y hacerme sentir acompañado.</div>
+          <div class="reason reveal">🤎 Amo cada momento contigo, porque siempre termina convirtiéndose en recuerdo.</div>
+          <div class="reason reveal">🤎 Amo lo única que eres, incluso cuando tú no alcanzas a verlo.</div>
+          <div class="reason reveal">🤎 Amo que contigo la vida se siente más suave, más bonita y más nuestra.</div>
         </div>
 
         <div class="random-box">
-          <button class="btn" id="randomReasonButton" type="button">Dame una razón al azar 🤎</button>
+          <button class="btn" id="randomReasonButton" type="button">Descubrir otra razón 🤎</button>
           <div id="randomReason"></div>
         </div>
       </div>
@@ -1176,25 +1183,22 @@
       <div class="card surprise-box reveal">
         <h2 class="title">Una sorpresa final</h2>
 
-        <p class="message">Presiona el botón cuando estés lista para abrir la última carta.</p>
-        <button class="btn" id="surpriseButton" type="button">Abrir sorpresa 🎁</button>
+        <p class="message">Cuando tu corazón esté listo, abre la última carta que guardé para ti.</p>
+        <button class="btn" id="surpriseButton" type="button">Abrir la última carta 🎁</button>
 
         <div id="secretMessage">
-          Mi amor, no puedo evitar volver a ese momento en el que todo empezó… aquella
-          noche en la que te invité a salir y me atreví a besarte. Fue un instante tan simple, pero
-          al mismo tiempo tan especial, que desde ahí supe que algo en mí había cambiado
-          para siempre. Sentí una conexión contigo que no se explica, solo se siente, y desde
-          entonces no he dejado de querer estar a tu lado.
-          
-          Desde ese día, cada momento contigo ha sido único. Me haces sentir paz, alegría y un
-          amor que crece sin darme cuenta. Eres esa persona que llegó sin avisar y se volvió todo para mí.
+Mi amor… hay momentos que se quedan marcados para siempre, y el mío comenzó contigo.
 
-          No quiero que esto sea solo un detalle de hoy, quiero que sea el comienzo de todo lo
-          que aún nos queda por vivir juntos, de una historia que seguimos escribiendo paso a
-          paso, con cada risa, cada abrazo y cada mirada.
+Aún recuerdo ese instante en el que todo cambió… aquella noche, ese primer beso, esa mezcla de nervios y emoción que sin darme cuenta se convirtió en algo mucho más grande. Desde ese momento supe que había algo especial, algo que no se explica, pero que se siente profundamente.
 
-          Gracias por existir, por elegirme y por hacer mi mundo mucho más bonito. Te amo
-          más de lo que las palabras pueden decir, mi princesa hermosa. 🤎
+Desde entonces, cada momento a tu lado ha sido único. Me haces sentir paz, alegría… y un amor que crece sin que me dé cuenta. Llegaste a mi vida sin avisar, pero te convertiste en todo para mí.
+
+Y no quiero que esto sea solo un detalle de hoy. Quiero que sea el comienzo de todo lo que aún nos falta por vivir juntos… de cada risa, cada abrazo, cada sueño que construiremos paso a paso.
+
+Gracias por existir, por elegirme, por hacer mi mundo más bonito.
+
+Te amo más de lo que las palabras pueden decir…
+y si pudiera elegir de nuevo, siempre te elegiría a ti. ❤️
         </div>
       </div>
     </div>
@@ -1308,12 +1312,12 @@
       }
 
       const reasonsList = [
-        "Amo que contigo puedo ser yo mismo y sentirme en casa. 🤎",
-        "Amo tu manera de hacer que un día normal se convierta en algo especial. ✨",
-        "Amo tu mirada, tu ternura y la paz que me transmites. 🤍",
-        "Amo que cada recuerdo contigo se vuelve importante para mí. 🌙",
-        "Amo todo lo bonito que eres, incluso en los detalles más pequeños. 💫",
-        "Amo que contigo el futuro se siente más bonito y más posible. 🕯️"
+        "Amo que contigo puedo ser yo mismo y sentir que mi corazón encontró casa. 🤎",
+        "Amo tu manera de convertir un día normal en algo que quiero recordar. ✨",
+        "Amo tu mirada, tu ternura y esa paz que solo tú sabes darme. 🤍",
+        "Amo que cada recuerdo contigo se guarda en mí como una carta bonita. 🌙",
+        "Amo lo hermosa que eres en los detalles pequeños, en los gestos simples y en tu forma de existir. 💫",
+        "Amo imaginar un futuro contigo, porque contigo todo se siente más posible. 🕯️"
       ];
 
       function showRandomReason() {
@@ -1426,7 +1430,7 @@
         console.assert(document.querySelector(".hero-actions a").textContent.includes("Leer mi carta"), "Solo debe quedar el botón Leer mi carta");
         console.assert(document.querySelector("#photoUpload") === null, "No debe existir botón/input para agregar fotos");
         console.assert(document.querySelector("#clearPhotosButton") === null, "No debe existir botón de limpiar fotos");
-        console.assert(document.querySelector(".music-info strong").textContent.trim() === "musica", "El título del reproductor debe decir musica");
+        console.assert(document.querySelector(".music-info strong").textContent.trim() === "Música", "El título del reproductor debe decir Música");
         console.assert(document.querySelectorAll(".moment-card").length === 4, "Deben existir 4 tarjetas de momentos");
         console.assert(document.querySelectorAll(".photo").length === 4, "Deben existir 4 fotos base");
         console.groupEnd();
